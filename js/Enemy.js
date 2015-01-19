@@ -8,9 +8,7 @@ var Enemy = function(scene){
 			loop : false
 		}
 	});
-
-	this.collisionRadius = 10;
-	this.scale = -1;
+	this.scale = -0.4;
 };
 
 Enemy.prototype = new Character();

@@ -18,6 +18,8 @@ var Character = function(scene, name, spriteList){
 	
 	this.scale = 0.3;
 	this.speed = Character.DEFAULT_SPEED;
+
+	this.collisionRadius = 20;
 	
 	this.movementListeners = [];
 };

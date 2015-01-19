@@ -21,7 +21,7 @@ Spawner.prototype.spawn = function(){
 	var enemy = new Enemy(this.scene);
 	enemy.setPosition(Math.random() *(this.xMax - this.xMin) + this.xMin, Math.random()*(this.yMax - this.yMin) + this.yMin);	
 	enemy.moveTo(Math.random() *(this.xMax - this.xMin) + this.xMin, Math.random()*(this.yMax - this.yMin) + this.yMin);		
-	this.scene.addEntity(enemy);
+	this.scene.addEntity(enemy, "enemy");
 	console.log("ennemy spawned");
 };
 

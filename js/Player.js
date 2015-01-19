@@ -12,9 +12,8 @@ var Player = function(scene){
 	var self = this;
 	this.canMove = false;
 	this.speed = 500/1000;
-	this.bulletInterval = 50;
+	this.bulletInterval = 500;
 	this.bulletTimer = 0;
-	this.collisionRadius = 10;
 	
 	this.game.canvas.addEventListener("mousedown", function(e){
 		self.canMove = true;
@@ -35,9 +34,9 @@ var Player = function(scene){
 		//console.log("mouse up");
 	});
 	
-	this.game.canvas.addEventListener("click", function(e){
+	/*this.game.canvas.addEventListener("click", function(e){
 		self.fire();
-	});
+	});*/
 };
 
 Player.prototype = new Character();
@@ -45,15 +44,15 @@ Player.prototype = new Character();
 Player.prototype.fire = function(){			
 	//console.log("fire");
 	var bullet = new Bullet(this.x, this.y - this.currentSprite.spriteHeight * 0.4);
-	this.scene.addEntity(bullet);
-	this.scene.destroyEntityWithDelay(bullet, 3);
+	this.scene.addEntity(bullet, "bullet");
+	this.scene.destroyEntityWithDelay(bullet, "bullet", 3);
 };
 
 Player.prototype.update = function(tpf){
 	Character.prototype.update.call(this, tpf);
 	//this.y += this.speed * tpf;
 	
-	//this.bulletTimer += tpf;
+	this.bulletTimer += tpf;
 	if(this.bulletTimer >= this.bulletInterval){
 		this.bulletTimer = 0;
 		//fire something

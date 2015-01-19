@@ -123,9 +123,9 @@ Scene.prototype.update = function(tpf){
 
 Scene.prototype.checkCollisions = function(){
 	for(var i = 0;i<this.bullets.length;i++){
-	var bullet = this.entities[i];
+	var bullet = this.bullets[i];
 		for(var j = 0;j<this.enemies.length;j++){
-			var e = this.entities[j];
+			var e = this.enemies[j];
 			if(this.isColliding(bullet, e)){				
 				//temp
 				this.destroyEntity(bullet, "bullet");
@@ -134,7 +134,7 @@ Scene.prototype.checkCollisions = function(){
 		}
 	}
 	for(var i = 0;i<this.enemies.length;i++){
-	var e = this.entities[i];
+	var e = this.enemies[i];
 		if(this.isColliding(e, this.player)){				
 			//temp
 			this.destroyEntity(e, "enemy");
