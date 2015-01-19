@@ -143,21 +143,23 @@ Scene.prototype.checkCollisions = function(){
 	}
 };
 
-Scene.prototype.isColliding = function(e1, e2){
+/*Scene.prototype.isColliding = function(e1, e2){
 	if(this.distanceSquared(e1.x, e1.y, e2.x, e2.y) <= Math.pow(e1.collisionRadius + e2.collisionRadius, 2)){
 		//collide
 		console.log("collide");
 		return true;
 	}
 	return false;
-};
+};*/
 
-Scene.prototype.distanceSquared = function(x1, y1, x2, y2){
-	return Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2);
-};
-
-Scene.prototype.distance = function(x1, y1, x2, y2){
-	return Math.sqrt(this.distanceSquared(x1, y1, x2, y2));
+Scene.prototype.isColliding = function(e1, e2){
+	if(e1.boundingVolume && e1.boundingVolume instanceof BoundingVolume
+		&& e2.boundingVolume  && e2.boundingVolume instanceof BoundingVolume){
+		return e1.intersects(e2);
+	}else{
+		console.log("No collider between " + e1.name +" and " + e2.name);
+		return false;
+	}
 };
 
 Scene.prototype.render = function(g){

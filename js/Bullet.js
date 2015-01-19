@@ -10,7 +10,7 @@ var Bullet = function(x, y){
 	this.x = x;
 	this.y = y;
 	this.scale = 0.5;
-	this.collisionRadius = 10;
+	this.collisionRadius = 25;
 };
 
 Bullet.prototype = new DrawableControl();
